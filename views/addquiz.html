@@ -1,0 +1,12 @@
+<div class="well well-sm clearfix">
+   Add new Quiz
+</div>
+<br>
+<!-- add quiz -->
+<form ng-submit="addQuiz()">
+    <div class="form-group">
+        <label >Quiz Name</label>
+        <input type="text" required class="form-control" ng-model="quiz.qname" placeholder="Enter Quiz Name">
+    </div>
+    <button type="submit" class="btn btn-primary">Add quiz</button>
+</form>

@@ -1,0 +1,45 @@
+<div class="well well-sm clearfix">
+    Add new Question
+</div>
+<br>
+<!-- add question -->
+<form ng-submit="addQuestion()">
+    <div class="form-group">
+        <label>Text Question</label>
+        <input type="text" required class="form-control" ng-model="question.text" placeholder="Enter Quiz Name">
+    </div>
+    <div class="form-group">
+        <label>Text answer1</label>
+        <input type="text" required class="form-control" ng-model="question.a1" placeholder="Enter Quiz answer1">
+    </div>
+    <div class="form-group">
+        <label>Text answer2</label>
+        <input type="text" required class="form-control" ng-model="question.a2" placeholder="Enter Quiz answer2">
+    </div>
+    <div class="form-group">
+        <label>Text answer3</label>
+        <input type="text" required class="form-control" ng-model="question.a3" placeholder="Enter Quiz answer3">
+    </div>
+    <div class="form-group">
+        <label>Text answer4</label>
+        <input type="text" required class="form-control" ng-model="question.a4" placeholder="Enter Quiz answer4">
+    </div>
+    <div class="form-group">
+        <label>Select correct Answer</label>
+        <select ng-model="question.correctAns" class="form-control">
+            <option style="display:none;"></option>
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Select Quiz</label>
+        <select  ng-model="question.quiz_id" class="form-control">
+            <option style="display:none;"></option>            
+            <option  ng-repeat="quiz in allQuizzes" value="{{quiz._id}}">{{quiz.qname}}</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add quiz</button>
+</form>

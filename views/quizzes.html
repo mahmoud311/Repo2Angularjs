@@ -1,1 +1,10 @@
-{{vm.xx}}
+<div class="row">
+  <div class="col-sm-6 col-md-4" ng-repeat="quiz in  allQuizzes">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>{{quiz.qname}}</h3>
+        <p><a ui-sref="showquiz/{{quiz._id}}" class="btn btn-primary" role="button">start Quiz</a></p>
+      </div>
+    </div>
+  </div>
+</div>
