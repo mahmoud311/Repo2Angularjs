@@ -7,8 +7,6 @@ appquiz.controller("allQuestionsCtrl", ['$scope', '$http','$rootScope', '$state'
 
     $scope.activeQuiz = function (quiz) {
         console.log(quiz);
-       // $rootScope.$broadcast("passData", quiz);
-    //    $state.go('showQuiz');
     }
 }]);
 

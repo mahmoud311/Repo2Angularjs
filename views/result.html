@@ -1,0 +1,92 @@
+<div>
+    <div class="row">
+        <div class="col-xs-8">
+            <h2>Results :</h2>
+            <div class="btn-toolbar" ng-repeat="question in quizQuestions " style="float:left;margin-right:5px">
+                <button class="btn" ng-class="{'btn-success':arr[$index] == quizQuestions[$index].correctAns,'btn-danger':arr[$index] == 5,'btn-danger':arr[$index] != quizQuestions[$index].correctAns}"
+                    ng-click="setActiveQuestion($index)">
+                    <span class="glyphicon " ng-class="{'glyphicon-ok': arr[$index] == quizQuestions[$index].correctAns, 'glyphicon-remove':arr[$index] != quizQuestions[$index].correctAns}"></span>
+                </button>
+                <div style="text-align:center">{{$index+1}}</div>
+
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <h4>Legend:</h4>
+                <div class="col-sm-4">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <p>Correct</p>
+                </div>
+                <div class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </div>
+                <p>InCorrect </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <h1>
+                <div class="col-md-12">
+                    Correct Answer: {{numCorrect}} / {{quizQuestions.length}}
+                </div>
+            </h1>
+            <h1>
+                <div class="col-md-12">
+                    InCorrect Answer: {{quizQuestions.length - numCorrect}} / {{quizQuestions.length}}
+                </div>
+            </h1>
+            <!--<div class="col-md-12">
+                {{calPerc | number:2}}%
+            </div>-->
+            <!--<div class="col-xs-12 top-buffer">
+
+                <h1> </h1>
+                <h2></h2>
+                <h2><strong> </strong> </h2>
+            </div>-->
+        </div>
+        <div class="row">
+            <h3>Question:</h3>
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4>{{activeQuestion+1+" ."+quizQuestions[activeQuestion].text}}</h4>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="answer" ng-class="{'bg-success':(quizQuestions[activeQuestion].correctAns == arr[activeQuestion] &&  arr[activeQuestion]==0) ||(quizQuestions[activeQuestion].correctAns==0)  ,'bg-danger':quizQuestions[activeQuestion].correctAns != arr[activeQuestion] && arr[activeQuestion]==0 }">{{quizQuestions[activeQuestion].a1}}
+                                    <p class="pull-right" ng-show="arr[activeQuestion]==0  && quizQuestions[activeQuestion].correctAns == 0|| arr[activeQuestion]==0">Your Answer</p>
+                                    <p class="pull-right" ng-show="quizQuestions[activeQuestion].correctAns == 0 && arr[activeQuestion] != 0"> Correct Answer</p>
+                                </h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 class="answer" ng-class="{'bg-success':(quizQuestions[activeQuestion].correctAns ==arr[activeQuestion] && arr[activeQuestion]==1) ||(quizQuestions[activeQuestion].correctAns==1) ,'bg-danger':quizQuestions[activeQuestion].correctAns != arr[activeQuestion]  && arr[activeQuestion]==1}">{{quizQuestions[activeQuestion].a2}}
+                                    <p class="pull-right" ng-show="arr[activeQuestion]==1  && quizQuestions[activeQuestion].correctAns == 1 || arr[activeQuestion]==1">Your Answer</p>
+                                    <p class="pull-right" ng-show="quizQuestions[activeQuestion].correctAns == 1 && arr[activeQuestion] !=1">Correct Answer</p>
+                                </h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 class="answer" ng-class="{'bg-success':(quizQuestions[activeQuestion].correctAns ==arr[activeQuestion] && arr[activeQuestion]==2)||(quizQuestions[activeQuestion].correctAns==2) ,'bg-danger':quizQuestions[activeQuestion].correctAns != arr[activeQuestion]  && arr[activeQuestion]==2}">{{quizQuestions[activeQuestion].a3}}
+                                    <p class="pull-right" ng-show="arr[activeQuestion]==2 && quizQuestions[activeQuestion].correctAns == 2 || arr[activeQuestion]==2">Your Answer</p>
+                                    <p class="pull-right" ng-show="quizQuestions[activeQuestion].correctAns == 2 && arr[activeQuestion]!=2">Correct Answer</p>
+                                </h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 class="answer" ng-class="{'bg-success':(quizQuestions[activeQuestion].correctAns ==arr[activeQuestion] && arr[activeQuestion]==3)||(quizQuestions[activeQuestion].correctAns==3) ,'bg-danger':quizQuestions[activeQuestion].correctAns != arr[activeQuestion]  && arr[activeQuestion]==3}">{{quizQuestions[activeQuestion].a4}}
+                                    <p class="pull-right" ng-show="arr[activeQuestion]==3  && quizQuestions[activeQuestion].correctAns == 3 || arr[activeQuestion]==3">Your Answer</p>
+                                    <p class="pull-right" ng-show="quizQuestions[activeQuestion].correctAns == 3 && arr[activeQuestion] !=3">Correct Answer</p>
+                                </h4>
+                            </div>
+                        </div>
+                        <button class="btn btn-warning" ng-click="previous()">Previous</button>
+                        <button class="btn btn-success pull-right" ng-click="next()">Next</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-lg" ng-click="reset()">Go back to facts</button>
+        </div>
+    </div>
+</div>

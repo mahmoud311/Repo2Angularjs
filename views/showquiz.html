@@ -1,1 +1,89 @@
-show quizzzzzzz
+<div>
+    <div class="row" ng-hide="hiddenProgress">
+        <div class="col-xs-8">
+            <h2>Progress:</h2>
+            <div ng-repeat="question in quizQuestions " style="float:left;margin-right:5px">
+                <button class="btn" ng-class="{'btn-info': arr[$index] != 5,'btn-danger':arr[$index] == 5}" ng-click="setActiveQuestion($index)">
+                 <span class="glyphicon" ng-class="{'glyphicon-pencil':arr[$index] != 5,'glyphicon-question-sign':arr[$index] == 5}"></span>
+                </button>
+                <div style="text-align:center">{{$index+1}}</div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <h4>Legend</h4>
+                <div class="col-md-4 col-xs-6" style="margin:5px">
+                    <button class="btn btn-info">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <p>Answered</p>
+
+                </div>
+                <div class="col-md-4 col-xs-6" style="margin:5px">
+                    <button class="btn btn-danger">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                    </button>
+                    <p>UnAnswered</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="hiddenQuestions">
+        <div class="alert alert-danger" ng-show="error">
+            Error ! you have not Answered all of the question !
+            <button class="close" ng-click="error=false">&times</button>
+        </div>
+        <h3>Question:</h3>
+        <div class="well well-sm" ng-hide="finalise">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>{{activeQuestion+1+". "+quizQuestions[activeQuestion].text}}</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4 class="answer" ng-class="{'bg-info': 0 === arr[activeQuestion]}" ng-click="selectAnswer(0)">{{quizQuestions[activeQuestion].a1}}</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="answer" ng-class="{'bg-info': 1 === arr[activeQuestion]}" ng-click="selectAnswer(1)">{{quizQuestions[activeQuestion].a2}}</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="answer" ng-class="{'bg-info': 2 === arr[activeQuestion]}" ng-click="selectAnswer(2)">{{quizQuestions[activeQuestion].a3}}</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4 class="answer" ng-class="{'bg-info': 3 === arr[activeQuestion]}" ng-click="selectAnswer(3)">{{quizQuestions[activeQuestion].a4}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-warning" ng-click="previous()">Previous</button>
+            <button class="btn btn-success pull-right" ng-click="next()">Next</button>
+        </div>
+        <div class="row" ng-hide="finalise">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-4 col-xs-4"></div>
+                    <div class="col-md-4 col-xs-4 " style="text-align:center">
+                        <button class="btn btn-success btn-md " ng-click="done()">Done</button>
+                    </div>
+                    <div class="col-md-4  col-xs-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="well well-sm" ng-show="finalise">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Are you sure you want to submit your answers?</h3>
+                    <button class="btn btn-success" ng-click="finaliseAnswers()">Yes</button>
+                    <button class="btn btn-danger" ng-click="finalise = false">NO</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="showNoData">
+        <div class="alert alert-danger" role="alert">
+            <center><strong>Coming Soon</strong></center>
+        </div>
+    </div>
+
+</div>
+<br><br>

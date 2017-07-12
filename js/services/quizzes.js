@@ -1,19 +1,22 @@
-appquiz.service("dataQuizzes", function ($http, $q, $state) {
-    var dataQuizzes = null;
+appquiz.service("dataQuizzes", function ($http, $q, $state,httpService) {
+   var dataQuizzes = null;
     var getQuizzes = function () {
+    //  var gg =  ;
+    //    console.log(gg);
         var deferred = $q.defer();
-        if (dataQuizzes) {
-            deferred.resolve(null);
-        } else {
-            $http.get('http://localhost:3001/api/quizzes').then(function (res) {
+        // if (dataQuizzes) {
+        //     deferred.resolve(dataQuizzes);
+        // } else {
+           httpService.get('api/quizzes').then(function (res) {
+               console.log(res);
                 if (res) {
-                    dataQuizzes = res.data;
-                    deferred.resolve(res.data);
+                    dataQuizzes = res;
+                    deferred.resolve(res);
                 } else {
                     deferred.resolve(null);
                 }
             })
-        }
+        // }
         return deferred.promise;
     }
     var addQuestion = function (objectDataQuestion) {
@@ -39,6 +42,6 @@ appquiz.service("dataQuizzes", function ($http, $q, $state) {
     return {
         getQuizzes: getQuizzes,
         addQuestion: addQuestion,
-        addQuiz:addQuiz
+        addQuiz: addQuiz
     }
 });

@@ -1,4 +1,4 @@
-var appquiz = angular.module("projectQuizzes", ["ui.router"])
+var appquiz = angular.module("projectQuizzes", ["ui.router","toaster","ui.bootstrap"])
     .config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         $stateProvider
             .state("index", {
@@ -15,10 +15,15 @@ var appquiz = angular.module("projectQuizzes", ["ui.router"])
                 url: "/addquestion",
                 templateUrl: "views/addquestion.html",
                 controller: "questionsCtrl"
-            }).state("showQuiz", {
+            }).state("showquiz", {
                 url: "/showquiz/:id",
                 templateUrl: "views/showquiz.html",
                 controller: "questionsShowCtrl"
+            })
+            .state("result", {
+                url: "/result",
+                templateUrl: "views/result.html",
+                controller: "resultCtrl"
             });
         $urlRouterProvider.otherwise('/');
     });
