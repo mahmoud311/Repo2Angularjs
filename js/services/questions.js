@@ -37,6 +37,39 @@ appquiz.service("dataQuestions", function ($http, $q, $state) {
         }
         return deferred.promise;
     }
+    var get5Question = function (quizData) {
+        console.log(quizData);
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: 'http://localhost:3001/api/quiz',
+            params:{"_id": quizData.id, "skip": quizData.skip}
+        })
+            .then(function (res) {
+                console.log(res.data);
+                if (res.data) {
+                    dataQuiz = res.data;
+                    deferred.resolve(res.data);
+                } else {
+                    deferred.resolve(null);
+                }
+            });
+        return deferred.promise;
+    }
+    // var get5Question = function (quizData) {
+    //     console.log(quizData);
+    //     var deferred = $q.defer();
+    //     $http.get('http://localhost:3001/api/quiz/5965dd668fa1b42a30d64b4b').then(function (res) {
+    //         if (res) {
+    //             dataQuiz = res.data;
+    //             deferred.resolve(res.data);
+    //         } else {
+    //             deferred.resolve(null);
+    //         }
+    //     })
+    //     return deferred.promise;
+    // }
+
     var answeredQuestions = function (qs) {
         console.log(qs);
         saveDataAnswered = qs;
@@ -50,6 +83,7 @@ appquiz.service("dataQuestions", function ($http, $q, $state) {
         getDataQuiz: getDataQuiz,
         answeredQuestions: answeredQuestions,
         getAnsweredQuestions: getAnsweredQuestions,
-        getQuizzes: getQuizzes
+        getQuizzes: getQuizzes,
+        get5Question: get5Question
     }
 });

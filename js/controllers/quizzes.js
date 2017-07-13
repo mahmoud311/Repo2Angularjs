@@ -2,7 +2,6 @@ appquiz.controller("quizzesCtrl", ['$scope','$state','$http','dataQuizzes', func
     console.log("asdasdasd");
     $scope.addQuiz = function () {
        dataQuizzes.addQuiz($scope.quiz);
-       console.log($scope.quiz);
        $scope.quiz= {};
     }
 }]);

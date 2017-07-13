@@ -18,10 +18,8 @@ appquiz.controller("questionsShowCtrl", ['$scope', '$state', '$stateParams', 'da
             console.log($scope.quizQuestions.length)
             $scope.arr = Array.apply(null, Array($scope.quizQuestions.length)).map(Number.prototype.valueOf, 5);
             msgBoxService.showSuccess("About this quiz !!", "This quiz contain questions");
-            
         }
     });
-
     $scope.error = false;
     $scope.finalise = false;
     $scope.activeQuestion = 0;

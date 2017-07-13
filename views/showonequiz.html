@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel heading</div>
+    <div class="panel-body">
+       <h2> <p>quiz newumber 5</p></h2>
+    </div>
+    <br>
+    <br>
+
+    <!-- List group -->
+    <ul class="list-group" ng-repeat="question in  dataQ">
+        <li class="list-group-item" >{{question.text}}</li>
+    </ul>
+</div>
+<center>
+    <button class="btn btn-success btn-lg" ng-click="loadMore()">show more</button>
+</center>
+<br>

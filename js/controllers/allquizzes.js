@@ -2,11 +2,11 @@ appquiz.controller("allQuestionsCtrl", ['$scope', '$http','$rootScope', '$state'
     $scope.vm = {};
     dataQuizzes.getQuizzes().then(function (res) {
         $scope.allQuizzes = res;
-        console.log(res);
+       // console.log(res);
     });
 
-    $scope.activeQuiz = function (quiz) {
-        console.log(quiz);
-    }
+    // $scope.activeQuiz = function (quiz) {
+    //     console.log(quiz);
+    // }
 }]);
 

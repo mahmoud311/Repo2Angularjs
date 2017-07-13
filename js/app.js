@@ -24,6 +24,11 @@ var appquiz = angular.module("projectQuizzes", ["ui.router","toaster","ui.bootst
                 url: "/result",
                 templateUrl: "views/result.html",
                 controller: "resultCtrl"
+            })
+             .state("showOneQuiz", {
+                url: "/showonequiz",
+                templateUrl: "views/showonequiz.html",
+                controller: "showOneQuizCtrl"
             });
         $urlRouterProvider.otherwise('/');
     });
