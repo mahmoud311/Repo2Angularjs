@@ -3,8 +3,10 @@ appquiz.controller("showOneQuizCtrl", ['$scope', '$state', '$stateParams', 'data
 
     $scope.more = 0;
     $scope.dataQ = [];
+
     dataQuestions.get5Question({
-        id: '5965dda28fa1b42a30d64b4c'}).then(function (res) {
+        id: null
+    }).then(function (res) {
         if (res.length == 0) {
             msgBoxService.showError("About this quiz !!", "This quiz  doesn't  contain any questions"); ``
         } else {
@@ -13,27 +15,27 @@ appquiz.controller("showOneQuizCtrl", ['$scope', '$state', '$stateParams', 'data
             msgBoxService.showSuccess("About this quiz !!", "This quiz contain questions");
         }
     });
-
+    console.log($scope.dataQ.length);
     $scope.loadMore = function () {
-        console.log($scope.more = $scope.more + 5);
-        var hh = {
-            id: '5965dda28fa1b42a30d64b4c'
+        console.log($scope.dataQ[$scope.dataQ.length - 1]._id);
+        var lsQuestion = {
+            id: $scope.dataQ[$scope.dataQ.length - 1]._id
         };
-        dataQuestions.get5Question(hh).then(function (res) {
-            if (res.length == 0) {
-                msgBoxService.showError("About this quiz !!", "This quiz  doesn't  contain any questions"); ``
-            } else {
-                console.log(res);
-                // var children = hege.concat(stale);
+        dataQuestions.get5Question(lsQuestion).then(function (res) {
+            if (res) {
+                if (res.length == 0) {
+                    msgBoxService.showError("About this quiz !!", "This quiz  doesn't  contain any questions"); ``
+                } else {
+                    console.log(res);
+                    console.log($scope.dataQ);
+                    $scope.dataQ = $scope.dataQ.concat(res);
+                    console.log($scope.dataQ);
+                    msgBoxService.showSuccess("About this quiz !!", "This quiz contain questions");
 
-                // for (var i = 0; i < res.length; i++) {
-                //     $scope.dataQ.push(res.Question[i]);
-                // }
-                console.log($scope.dataQ);
-                msgBoxService.showSuccess("About this quiz !!", "This quiz contain questions");
-
+                }
             }
         });
     }
+
 
 }]);
